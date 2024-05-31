@@ -254,11 +254,6 @@ int main(void)
 
     for (;;)
     {
-        sleep_ms(1000);
-    }
-
-    for (;;)
-    {
         multicore_fifo_push_blocking(1);
         printf("# Starting combination #%03d\n", combo_id);
 
