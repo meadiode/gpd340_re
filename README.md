@@ -3,7 +3,7 @@
 Plessey GPD340 - pinout & driving scheme
 ========================================
 
-**GPD340** is a 2-character 5x7 dot-matrix LED smart display manifactured by Plessey in the 80s.
+**GPD340** is a 2-character 5x7 dot-matrix LED smart display manufactured by Plessey in the 80s.
 
 Since there is little to no information available on the internet about this display, this repo is the result of a succesful attempt to reverse engineer the pinout and driving scheme in order to make these displays useful in hobby projects and such.
 
