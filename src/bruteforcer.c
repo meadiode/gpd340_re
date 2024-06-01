@@ -104,9 +104,6 @@ static void ina219_init(void)
     printf("# INA219 registers before calibration:\n");
     ina219_printout_registers();
 
-    uint8_t reg = INA219_REG_CFG;
-    uint8_t val[2] = {0};
-
     uint16_t cal_v = INA219_MAGIC_VAL / (CURRENT_LSB * R_SHUNT);
 
     uint8_t cal_reg[3] = {0};

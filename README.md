@@ -5,7 +5,7 @@ Plessey GPD340 - pinout & driving scheme
 
 **GPD340** is a 2-character 5x7 dot-matrix LED smart display manufactured by Plessey in the 80s.
 
-Since there is little to no information available on the internet about this display, this repo is the result of a succesful attempt to reverse engineer the pinout and driving scheme in order to make these displays useful in hobby projects and such.
+Since there is little to no information available on the internet about this display, this repo is the result of a successful attempt to reverse engineer the pinout and driving scheme in order to make these displays useful in hobby projects and such.
 
 
 ![gpd340](images/GPD340_01_smol.jpg)
@@ -43,7 +43,7 @@ Loading pixel data
 
 Pixel data is loaded serially using the corresponding to either character CHARx_CLK and DATA pins. 
 
-To start the serial transmition, the DATA and CLK pins must be pulled HIGH and exactly one clock cycle must be performed, that is, pull the CLK pin LOW and then after a short pause back to HIGH.
+To start the serial transmission, the DATA and CLK pins must be pulled HIGH and exactly one clock cycle must be performed, that is, pull the CLK pin LOW and then after a short pause back to HIGH.
 This is followed by the transmission of exactly 35 bits. Each '1' (the DATA pin pulled HIGH) in this data corresponds to a lit pixel and each '0' (the DATA pin pulled LOW) to an unlit pixel.
 These 35 bits define 5x7 dot matrix, the top row of which (the first 5 bits) goes to the bottom-most pixels of the character.
 For example, to display the letter 'V' the following bits must be loaded:
@@ -84,7 +84,7 @@ Thus, it should have at least one serial clock input and at least one serial dat
 Bruteforcing setup
 ------------------
 After some unsuccessful attempts to manually determine the controlling pins and serial protocol, it was decided to build a breadboard contraption that would automatically
-go through all combinations of the remaining 6 pins, sequentally assign them the roles of serial clock, serial data and "fixed pins". And attempt to load
+go through all combinations of the remaining 6 pins, sequentially assign them the roles of serial clock, serial data and "fixed pins". And attempt to load
 some data patterns according to the assigned roles and monitor and log the current while doing all this.
 
 The contraption was built based on a Raspberry Pi pico and an INA219 current sensor module.
@@ -94,7 +94,7 @@ the log from minicom is stored in a file for further analysis.
 
 The setup was run at 4.2 volts and with a limited supply current to avoid potential overcurrent of the subjected GPD340 and/or damage of the pico's GPIOs.
 After a few minutes of running, some random pixels on the GPD340 begin to glow dimly, which was a good sign.
-Then, after a full run and analysys of the collected current monitor log - it was clearly visible which combination of pins caused the current to surge.
+Then, after a full run and analysis of the collected current monitor log - it was clearly visible which combination of pins caused the current to surge.
 After that, it was very easy to see which pin is which.
 
 Further figuring out the serial protocol was done by manual experimenting on the same breadboard.
